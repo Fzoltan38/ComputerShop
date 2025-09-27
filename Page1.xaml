@@ -70,10 +70,22 @@
                            Text="Jelszó:"
                             Margin="0,0,8,0"
                         />
-                <PasswordBox Grid.Row="1" Grid.Column="1"
+                <PasswordBox x:Name="userPasswordTextBox" Grid.Row="1" Grid.Column="1"
                                MinWidth="100" Height="25"/>
-
+                
                 <StackPanel Grid.Row="2" Grid.Column="1">
+                    <TextBlock>
+                          <Hyperlink
+                              x:Name="registerLink"
+                              FontWeight="bold"
+                              Foreground="Blue"
+                              Click="registerLink_Click"
+                              >
+                           Regisztrálok     
+                          </Hyperlink>
+                    </TextBlock>
+                           
+         
                     <Button x:Name="loginButton"
                             HorizontalAlignment="Right"
                             Margin="0,12,0,0"
@@ -81,6 +93,7 @@
                             MinWidth="100"
                             Height="30"
                             FontWeight="Bold" Width="122"
+                            Click="loginButton_Click"
                             />
                 </StackPanel>
 
