@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace ComputerShop
 {
@@ -61,6 +62,24 @@ namespace ComputerShop
                 return ex.Message;
             }
 
+        }
+
+        //Userek megjelenítése datagrid-ben
+        public DataView GetAllUser()
+        {
+            conn.Connection.Open();
+
+            string sql = "SELECT * FROM users";
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn.Connection);
+
+            DataTable dt = new DataTable();
+
+            adapter.Fill(dt);
+
+            conn.Connection.Close();
+
+            return dt.DefaultView;
         }
     }
 }

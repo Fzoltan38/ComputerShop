@@ -8,10 +8,12 @@ namespace ComputerShop
     /// </summary>
     public partial class RegisterForm : Page
     {
+        private MainWindow _mainWindow;
         SqlStatements sql = new SqlStatements();
-        public RegisterForm()
+        public RegisterForm(MainWindow mainWindow)
         {
             InitializeComponent();
+            _mainWindow = mainWindow;
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
@@ -19,7 +21,7 @@ namespace ComputerShop
             try
             {
                 MessageBox.Show(sql.RegisterUser(userNameTextBox.Text, userPasswordTextBox.Password, userFullNameTextBox.Text, userEmailTextBox.Text));
-
+                _mainWindow.MainFrame.Navigate(new LoginForm(_mainWindow));
             }
             catch (System.Exception ex)
             {

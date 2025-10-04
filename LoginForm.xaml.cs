@@ -22,7 +22,7 @@ namespace ComputerShop
             {
                 if (sql.LoginUser(userNameTextBox.Text, userPasswordTextBox.Password))
                 {
-                    largeWindow.Text = "Regisztrált tag.";
+                    _mainWindow.MainFrame.Navigate(new ShowUser());
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace ComputerShop
         }
         private void registerLink_Click(object sender, RoutedEventArgs e)
         {
-            _mainWindow.MainFrame.Navigate(new RegisterForm());
+            _mainWindow.MainFrame.Navigate(new RegisterForm(_mainWindow));
         }
     }
 }

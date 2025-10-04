@@ -51,3 +51,5 @@ D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\RegisterForm.baml
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop.exe.config
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\LoginForm.g.cs
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\LoginForm.baml
+D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ShowUser.g.cs
+D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ShowUser.baml
