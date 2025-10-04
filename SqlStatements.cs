@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Data;
+using System.Windows;
 
 namespace ComputerShop
 {
@@ -28,8 +29,9 @@ namespace ComputerShop
                 conn.Connection.Close();
                 return isValid;
             }
-            catch
+            catch (System.Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 return false;
             }
 
@@ -83,10 +85,10 @@ namespace ComputerShop
 
                 return dt.DefaultView;
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message);
+                return null;
             }
 
         }
@@ -107,10 +109,9 @@ namespace ComputerShop
                 cmd.ExecuteNonQuery();
                 conn.Connection.Close();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -139,10 +140,9 @@ namespace ComputerShop
 
                 conn.Connection.Close();
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message);
             }
 
         }
