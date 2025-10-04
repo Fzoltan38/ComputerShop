@@ -10,7 +10,7 @@ namespace ComputerShop
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Page1(this));
+            MainFrame.Navigate(new LoginForm(this));
         }
     }
 }

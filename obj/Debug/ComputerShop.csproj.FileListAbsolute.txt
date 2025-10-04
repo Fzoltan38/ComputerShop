@@ -3,12 +3,10 @@ D:\Desktop\C#Oktav\WPF\ComputerShop\bin\Debug\ComputerShop.exe
 D:\Desktop\C#Oktav\WPF\ComputerShop\bin\Debug\ComputerShop.pdb
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop.csproj.AssemblyReference.cache
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\MainWindow.g.cs
-D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\Page1.g.cs
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\App.g.cs
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop_MarkupCompile.cache
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop_MarkupCompile.lref
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\MainWindow.baml
-D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\Page1.baml
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop.g.resources
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop.Properties.Resources.resources
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop.csproj.GenerateResource.cache
@@ -51,3 +49,5 @@ D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\Computer.0350A5DA.Up2Date
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\RegisterForm.g.cs
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\RegisterForm.baml
 D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\ComputerShop.exe.config
+D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\LoginForm.g.cs
+D:\Desktop\C#Oktav\WPF\ComputerShop\obj\Debug\LoginForm.baml
