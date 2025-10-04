@@ -38,6 +38,22 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Módosít">
+                <DataGridTemplateColumn.CellTemplate>
+                <DataTemplate>
+                            <Button
+                             x:Name="userUpdteButton"
+                             Content="M"
+                             Foreground="Black"
+                             Background="Yellow"
+                             Click="userUpdteButton_Click"
+                             Tag="{Binding}"
+                             />
+                </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

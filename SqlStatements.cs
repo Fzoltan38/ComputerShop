@@ -67,19 +67,84 @@ namespace ComputerShop
         //Userek megjelenítése datagrid-ben
         public DataView GetAllUser()
         {
-            conn.Connection.Open();
+            try
+            {
+                conn.Connection.Open();
 
-            string sql = "SELECT * FROM users";
+                string sql = "SELECT * FROM users";
 
-            MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn.Connection);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn.Connection);
 
-            DataTable dt = new DataTable();
+                DataTable dt = new DataTable();
 
-            adapter.Fill(dt);
+                adapter.Fill(dt);
 
-            conn.Connection.Close();
+                conn.Connection.Close();
 
-            return dt.DefaultView;
+                return dt.DefaultView;
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        //User törlése
+        public void DeleteUser(object id)
+        {
+            try
+            {
+                conn.Connection.Open();
+
+                string sql = "DELETE FROM users WHERE Id = @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+
+                cmd.Parameters.AddWithValue("@id", id);
+
+                cmd.ExecuteNonQuery();
+                conn.Connection.Close();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //User adatok módisítása
+
+        public void UpdateUser(object Row)
+        {
+            try
+            {
+                conn.Connection.Open();
+
+                string sql = "UPDATE `users` SET `UserName`=@username,`Password`=@password,`FullName`=@fullname,`Email`=@email,`RegDate`=@date WHERE Id = @id";
+
+                MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
+
+                var usr = Row.GetType().GetProperties();
+
+                cmd.Parameters.AddWithValue("@username", usr[1].GetValue(Row));
+                cmd.Parameters.AddWithValue("@password", usr[2].GetValue(Row));
+                cmd.Parameters.AddWithValue("@fullname", usr[3].GetValue(Row));
+                cmd.Parameters.AddWithValue("@email", usr[4].GetValue(Row));
+                cmd.Parameters.AddWithValue("@date", usr[5].GetValue(Row));
+                cmd.Parameters.AddWithValue("@id", usr[0].GetValue(Row));
+
+                cmd.ExecuteNonQuery();
+
+                conn.Connection.Close();
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+
         }
     }
 }
