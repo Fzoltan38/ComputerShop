@@ -9,10 +9,36 @@
       Title="ShowUser">
 
     <Grid>
-        <DataGrid x:Name="userDataGrid" AutoGenerateColumns="True"
+        <DataGrid x:Name="userDataGrid" 
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
                   Margin="20"
-                  Width="400"
+                  Width="700"
                   Height="300"
-                  />
+                  >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Azonosító" Binding="{Binding Id}"/>
+                <DataGridTextColumn Header="Felhasználónév" Binding="{Binding UserName}"/>
+                <DataGridTextColumn Header="Jelszó" Binding="{Binding Password}"/>
+                <DataGridTextColumn Header="Teljesnév" Binding="{Binding FullName}"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Dátum" Binding="{Binding RegDate}"/>
+
+                <DataGridTemplateColumn Header="Töröl">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                x:Name="userDeleteButton"
+                                Content="X"
+                                Foreground="White"
+                                Background="Red"
+                                Click="userDeleteButton_Click"
+                                Tag="{Binding}"
+                                />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

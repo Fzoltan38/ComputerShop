@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿using System.Data;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace ComputerShop
 {
@@ -12,6 +14,15 @@ namespace ComputerShop
         {
             InitializeComponent();
             userDataGrid.ItemsSource = sql.GetAllUser();
+
+        }
+
+        private void userDeleteButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (userDataGrid.SelectedItem is DataRowView item)
+            {
+                MessageBox.Show(item["UserName"].ToString());
+            }
 
         }
     }
