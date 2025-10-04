@@ -9,7 +9,7 @@
       Title="RegisterForm">
 
     <Grid>
-        <Grid>
+        <Grid Margin="250,100,250,100">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="*"/>
