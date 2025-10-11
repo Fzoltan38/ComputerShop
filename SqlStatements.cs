@@ -1,5 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using System;
 using System.Data;
+using System.Security.Cryptography;
+using System.Text;
 using System.Windows;
 
 namespace ComputerShop
@@ -15,19 +18,25 @@ namespace ComputerShop
             {
                 conn.Connection.Open();
 
-                string sql = "SELECT Id FROM users  WHERE `UserName`=@username AND `Password`=@password;";
+                string sql = "SELECT * FROM users  WHERE `UserName`= @username;";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
 
                 cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", userpassword);
 
                 MySqlDataReader dr = cmd.ExecuteReader();
-                bool isValid = dr.Read();
 
-                dr.Close();
+                if (dr.Read())
+                {
+                    string storedHash = dr.GetString("Password");
+                    string storedSalt = dr.GetString("Salt");
+                    string computeHash = ComputeHmacHash256(userpassword, storedSalt);
+                    conn.Connection.Close();
+                    return storedHash == computeHash;
+                }
+
                 conn.Connection.Close();
-                return isValid;
+                return false;
             }
             catch (System.Exception ex)
             {
@@ -42,16 +51,19 @@ namespace ComputerShop
         {
             try
             {
+                string salt = GenerateSalt();
+                string hashedPassword = ComputeHmacHash256(password, salt);
                 conn.Connection.Open();
 
-                string sql = "INSERT INTO `users`(`UserName`, `Password`, `FullName`, `Email`) VALUES (@username,@password,@fullname,@email)";
+                string sql = "INSERT INTO `users`(`UserName`, `Password`, `Salt`, `FullName`, `Email`) VALUES (@username,@password,@salt,@fullname,@email)";
 
                 MySqlCommand cmd = new MySqlCommand(sql, conn.Connection);
 
                 cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
+                cmd.Parameters.AddWithValue("@password", hashedPassword);
                 cmd.Parameters.AddWithValue("@fullname", fullname);
                 cmd.Parameters.AddWithValue("@email", email);
+                cmd.Parameters.AddWithValue("@salt", salt);
 
                 cmd.ExecuteNonQuery();
 
@@ -145,6 +157,27 @@ namespace ComputerShop
                 MessageBox.Show(ex.Message);
             }
 
+        }
+
+        public string GenerateSalt()
+        {
+            byte[] salt = new byte[16];
+
+            using (var rnd = RandomNumberGenerator.Create())
+            {
+                rnd.GetBytes(salt);
+            }
+
+            return Convert.ToBase64String(salt);
+        }
+
+        public string ComputeHmacHash256(string password, string salt)
+        {
+            using (var hmac = new HMACSHA256(Encoding.UTF8.GetBytes(salt)))
+            {
+                byte[] hash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(hash);
+            }
         }
     }
 }
